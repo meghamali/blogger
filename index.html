@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/976edb26cc.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="http://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <title>Bootstrap Theme</title>
+  </head>
+  <body style="background-color: #a6edc6;">
+    <div class="container">
+      <div class="col-sm-12 col-md-12">
+        <div
+          class="mt-5 p-1 border container rounded bg-muted text-center text-white"
+          id="home"
+        >
+          Hi, Have a great day<i class="far fa-smile-beam"></i>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 mt-2">
+              <a href="#data" class="align-self-center"
+                ><i class="fas fa-user-edit"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <p id="a" class="bg-secondary text-white border mt-3 p-5"></p>
+        <div class="row">
+          <div class="col-sm-4 col-md-4 p-4"></div>
+          <div class="col-sm-4 col-md-4"></div>
+          <div class="col-sm-4 col-md-4">
+            <button type="reset" class="btn btn-danger mb-3" id="clear">
+              Clear
+            </button>
+            <a href="#home" class="align-self-center"
+              ><i class="fas fa-home fa-2x"></i
+            ></a>
+          </div>
+        </div>
+        <textarea
+          class="form-control"
+          name="insert"
+          id="data"
+          cols="30"
+          rows="10"
+          placeholder="write here"
+        ></textarea>
+        <button id="add" type="submit" class="btn bg-muted btn-block mb-5 mt-1">
+          <a href="index.html" class="text-white"><div>Submit</div></a>
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    if (localStorage.getItem('user-input') == null) {
+      $('p').html('');
+    } else $('p').html(localStorage.getItem('user-input'));
+    $('textarea').html('');
+
+    $('#add').click(function () {
+      if ($('#data').val() !== null) {
+        localStorage.setItem(
+          'user-input',
+          $('#a').html() + '<br>' + $('#data').val()
+        );
+      }
+    });
+    $('#clear').click(function () {
+      var flag = confirm('Do you want to clear all the thoughts?');
+      if (flag == true) {
+        localStorage.removeItem('user-input');
+        $('p').html('');
+      }
+    });
+  </script>
+</html>
